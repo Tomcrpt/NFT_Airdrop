@@ -14,20 +14,20 @@ async function main() {
   const groups = ["","",""];
 
   // Deployment of the contract
-  const HDAirdrop = await hre.ethers.getContractFactory("HDAirdrop");
-  const hdAirdrop = await HDAirdrop.deploy();
+  const NFTAirdrop = await hre.ethers.getContractFactory("NFTAirdrop");
+  const nftAirdrop = await NFTAirdrop.deploy();
 
-  await hdAirdrop.deployed();
-  console.log("Deployment of the URI: ", hdAirdrop.baseURI);
+  await nftAirdrop.deployed();
+  console.log("Deployment of the URI: ", nftAirdrop.baseURI);
 
-  console.log("Contract deployed to: ", hdAirdrop.address);
+  console.log("Contract deployed to: ", nftAirdrop.address);
  
 
   // Mint NFTs
   for (let i = 0; i< airdropAddresses.length; i++){
-    tx = await hdAirdrop.setBaseURI(pins[i]);
+    tx = await nftAirdrop.setBaseURI(pins[i]);
     await tx.wait();
-    tx1 = await hdAirdrop.mint(groups[i],airdropAddresses[i]);
+    tx1 = await nftAirdrop.mint(groups[i],airdropAddresses[i]);
     await tx1.wait();
     console.log("NFT airdropped successfully !")
   }

@@ -3,12 +3,12 @@ const hre = require("hardhat");
 const pin1 = ""
 
 async function main() {
-  const HDAirdrop = await hre.ethers.getContractFactory("HDAirdrop");
-  const hdAirdrop = await HDAirdrop.deploy(pin1);
+  const NFAirdrop = await hre.ethers.getContractFactory("NFTAirdrop");
+  const nftAirdrop = await NFTAirdrop.deploy(pin1);
 
-  await hdAirdrop.deployed();
+  await nftAirdrop.deployed();
 
-  console.log("Collection deployed to: ", hdAirdrop.address);
+  console.log("Collection deployed to: ", nftAirdrop.address);
 
 }
 
